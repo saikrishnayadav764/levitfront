@@ -111,7 +111,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
 
       if (formData.files2.length === 0) {
         alert('Please upload files.');
-        setCurrentStep(1);
+        setCurrentStep(2);
         return;
       }
 
@@ -184,7 +184,6 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
       });
 
       navigate('/submissions');
-      setCurrentStep(1);
     }
   };
 
@@ -209,7 +208,6 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
     });
 
     navigate('/submissions');
-    setCurrentStep(1);
   };
 
   return (
