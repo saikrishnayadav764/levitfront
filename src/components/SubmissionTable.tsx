@@ -49,8 +49,7 @@ const SubmissionTable: React.FC = () => {
     setSearchTerm(e.target.value);
   };
 
-  useEffect(() => {
-    async function fetchSubmissions() {
+  async function fetchSubmissions() {
       try {
         const resp = await fetch('https://funny-rose-beret.cyclic.app/submissions');
         const dat = await resp.json();
@@ -61,11 +60,15 @@ const SubmissionTable: React.FC = () => {
       }
     }
 
+  useEffect(() => {
     fetchSubmissions();
-
     // const fetchDataInterval = setInterval(fetchSubmissions, 100);
     // return () => clearInterval(fetchDataInterval);
   }, []);
+
+  handleRefresh =()=>{
+    fetchSubmissions();
+  }
 
   // useEffect(() => {
   //   async function fetchFilenames() {
@@ -120,6 +123,7 @@ const SubmissionTable: React.FC = () => {
   return (
     <div className="pl-1">
       <h1 className="text-2xl font-bold mb-4">Submission Table</h1>
+      <button onClick={handleRefresh} className="bg-blue-500 text-white hover:bg-green-600 rounded-md p-2">Refresh</button>
       <div>
         <input
           type="text"
