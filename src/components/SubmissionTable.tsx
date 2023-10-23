@@ -174,15 +174,12 @@ const SubmissionTable: React.FC = () => {
                   {data.files.map((file, fileIndex) => {
                     ind = ind + 1;
                     return (
-                      <a
+                      <p
                         key={fileIndex}
-                        href="#" 
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="text-blue-500 hover:underline" 
                       >
                         {`${file} `}
-                      </a>
+                      </p>
                     );
                   })}
                 </td>
