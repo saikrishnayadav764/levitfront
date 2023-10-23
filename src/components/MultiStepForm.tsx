@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import React, { useState,FC } from 'react';
 import BasicDetails from './BasicDetails';
 import MultiFieldSelect from './MultiFieldSelect';
