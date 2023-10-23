@@ -37,7 +37,7 @@ const Login = () => {
 
         Cookies.set('authToken', data.token, { expires: 1 / 24 }); // Token expires in 1 hour 
 
-        navigate('/submissions'); 
+        navigate('/form'); 
       } else {
         const data = await response.json();
         setMessage(data.message);
