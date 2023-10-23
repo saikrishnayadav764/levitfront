@@ -66,7 +66,7 @@ const SubmissionTable: React.FC = () => {
     // return () => clearInterval(fetchDataInterval);
   }, []);
 
-  handleRefresh =()=>{
+  const handleRefresh =()=>{
     fetchSubmissions();
   }
 
