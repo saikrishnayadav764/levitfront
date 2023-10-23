@@ -53,7 +53,7 @@ const FormDataProvider: FC<FormDataProviderProps> = ({ children }) => {
       country: '',
     },
     selectedOptions: [],
-    geolocationStatus: '',
+    geolocationStatus: 'No Data',
     files: [],
     files2:[],
     submitDate: new Date(),
@@ -65,7 +65,6 @@ const FormDataProvider: FC<FormDataProviderProps> = ({ children }) => {
       submitDate: new Date(),
     };
     setFormData(updatedFormData);
-    // Additional logic for handling form submission if needed
   };
 
   return (
