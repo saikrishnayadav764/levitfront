@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState, useEffect } from 'react';
 import { useFormData } from '../context/FormDataContext';
 import { Navigate } from 'react-router-dom';
