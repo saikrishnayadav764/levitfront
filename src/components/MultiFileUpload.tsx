@@ -20,7 +20,6 @@ const MultiFileUpload: React.FC<MultiFileUploadProps> = ({
     return <Navigate to="/login" />;
   }
   const { formData, setFormData } = useFormData();
-  const [geolocationCapturing, setGeolocationCapturing] = useState<boolean>(false);
   const [geolocationStatus, setGeolocationStatus] = useState<string>("Getting geolocation...");
 
   useEffect(() => {

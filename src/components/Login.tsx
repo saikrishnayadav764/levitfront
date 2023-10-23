@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState();
+  // const [message, setMessage] = useState();
+  const [message, setMessage] = useState<string | undefined>();
   const navigate = useNavigate(); // Get the navigation function
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> =>  {
     e.preventDefault();
 
     // Check if the email and password fields are not empty
@@ -53,7 +54,7 @@ const Login = () => {
   return (
     <div className="p-6 max-w-md mx-auto bg-white rounded-lg shadow-lg">
       <h1 className="text-2xl font-bold text-center mb-4">Login Page</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={(e)=>handleSubmit(e)} className="space-y-4">
         <div>
           <label className="text-gray-600">Email</label>
           <input

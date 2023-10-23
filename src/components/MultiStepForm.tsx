@@ -40,11 +40,6 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
   const { formData, setFormData } = useFormData();
   const [currentStep, setCurrentStep] = useState<number>(step);
   const navigate = useNavigate();
-  const [secData, setSecData] = useState<string[]>([]);
-
-  const setData = (data: string[]): void => {
-    setSecData(data);
-  };
 
   const handleLogout = (): void => {
     Cookies.remove('authToken');
@@ -152,7 +147,6 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
         files: newFileNames,
       };
 
-      const fileArray: File[] = Array.from(formData.files).map((fileName) => new File([fileName], fileName));
 
       fetch('http://localhost:3000/submit', {
         method: 'POST',
