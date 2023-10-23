@@ -62,6 +62,8 @@ const SubmissionTable: React.FC = () => {
 
   useEffect(() => {
     fetchSubmissions();
+    fetchSubmissions();
+    fetchSubmissions();
     // const fetchDataInterval = setInterval(fetchSubmissions, 100);
     // return () => clearInterval(fetchDataInterval);
   }, []);
