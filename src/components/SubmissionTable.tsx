@@ -123,7 +123,7 @@ const SubmissionTable: React.FC = () => {
   return (
     <div className="pl-1">
       <h1 className="text-2xl font-bold mb-4">Submission Table</h1>
-      <button onClick={handleRefresh} className="bg-blue-500 text-white hover:bg-green-600 rounded-md p-2">Refresh</button>
+      <button onClick={handleRefresh} className="bg-blue-500 text-white hover:bg-green-600 rounded-md p-2 text-center">Refresh</button>
       <div>
         <input
           type="text"
