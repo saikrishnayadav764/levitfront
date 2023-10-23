@@ -115,24 +115,24 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
         return;
       }
 
-      const formData2 = new FormData();
-      for (const file of formData.files2) {
-        formData2.append('files', file);
-      }
+      // const formData2 = new FormData();
+      // for (const file of formData.files2) {
+      //   formData2.append('files', file);
+      // }
 
-      console.dir(formData.files);
+      // console.dir(formData.files);
 
-      fetch('http://localhost:3000/upload', {
-        method: 'POST',
-        body: formData2,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          alert(data.message);
-        })
-        .catch((error) => {
-          console.error('File upload failed:', error);
-        });
+      // fetch('http://localhost:3000/upload', {
+      //   method: 'POST',
+      //   body: formData2,
+      // })
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     alert(data.message);
+      //   })
+      //   .catch((error) => {
+      //     console.error('File upload failed:', error);
+      //   });
 
       // const newFileNames = formData.files.map((file) => {
       //   return ({name : file.name});
@@ -148,7 +148,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
       };
 
 
-      fetch('http://localhost:3000/submit', {
+      fetch('https://funny-rose-beret.cyclic.app/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -177,7 +177,6 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
           country: '',
         },
         files: [],
-        files2:[],
         selectedOptions: [],
         geolocationStatus: 'None',
         submitDate: new Date(),
