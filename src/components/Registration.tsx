@@ -11,14 +11,14 @@ const Registration: React.FC = () => {
   const handleRegistration = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Check if the name, email, and password fields are not empty
+
     if (!name || !email || !password) {
       setMessage('Name, email, and password are required.');
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:3000/register', {
+      const response = await fetch('https://funny-rose-beret.cyclic.app/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
