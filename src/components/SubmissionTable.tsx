@@ -1,4 +1,5 @@
 //@ts-nocheck
+
 import React, { useState, useEffect } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
@@ -51,7 +52,7 @@ const SubmissionTable: React.FC = () => {
   useEffect(() => {
     async function fetchSubmissions() {
       try {
-        const resp = await fetch('http://localhost:3000/submissions');
+        const resp = await fetch('https://funny-rose-beret.cyclic.app/submissions');
         const dat = await resp.json();
         const fin = dat.submissions;
         setSubmissions(fin);
@@ -63,20 +64,20 @@ const SubmissionTable: React.FC = () => {
     fetchSubmissions();
   }, []);
 
-  useEffect(() => {
-    async function fetchFilenames() {
-      try {
-        const resp = await fetch('http://localhost:3000/filenames');
-        const dat = await resp.json();
-        const fin = dat.filenames;
-        setFilenames(fin);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchFilenames() {
+  //     try {
+  //       const resp = await fetch('http://localhost:3000/filenames');
+  //       const dat = await resp.json();
+  //       const fin = dat.filenames;
+  //       setFilenames(fin);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
 
-    fetchFilenames();
-  }, []);
+  //   fetchFilenames();
+  // }, []);
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -95,10 +96,7 @@ const SubmissionTable: React.FC = () => {
   };
 
   const handleLogout = () => {
-    // Clear the authentication token cookie
     Cookies.remove('authToken');
-
-    // Redirect to the login page
     navigate('/login');
   };
 
@@ -178,12 +176,12 @@ const SubmissionTable: React.FC = () => {
                     return (
                       <a
                         key={fileIndex}
-                        href={`http://localhost:3000/uploads/${filenames[ind]}`} // Replace with your server URL
+                        href="#" 
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline" // Tailwind CSS link styles
+                        className="text-blue-500 hover:underline" 
                       >
-                        {`file${fileIndex + 1} `}
+                        {`${file} `}
                       </a>
                     );
                   })}
