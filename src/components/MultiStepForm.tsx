@@ -182,7 +182,8 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
         submitDate: new Date(),
       });
 
-      <Navigate to='/submissions'/>
+      navigate('/submissions');
+      setCurrentStep(1);
     }
   };
 
