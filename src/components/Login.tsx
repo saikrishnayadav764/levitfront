@@ -5,7 +5,7 @@ import { useNavigate, Navigate} from 'react-router-dom';
 const Login = () => {
   const authToken: string | undefined = Cookies.get('authToken');
   if (authToken) {
-    return <Navigate to="/submissions" />;
+    return <Navigate to="/form" />;
   }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
