@@ -5,21 +5,20 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [message, setMessage] = useState();
   const [message, setMessage] = useState<string | undefined>();
-  const navigate = useNavigate(); // Get the navigation function
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> =>  {
     e.preventDefault();
 
-    // Check if the email and password fields are not empty
+
     if (!email || !password) {
       setMessage('Email and password are required.');
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch('https://funny-rose-beret.cyclic.app/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,11 +30,10 @@ const Login = () => {
         const data = await response.json();
         setMessage(data.message);
 
-        // Set the authentication token in a cookie
-        Cookies.set('authToken', data.token, { expires: 1 / 24 }); // Token expires in 1 hour (adjust as needed)
 
-        // Redirect to the Multi-step form page (Page 4)
-        navigate('/submissions'); // Redirect to the "/submissions" page
+        Cookies.set('authToken', data.token, { expires: 1 / 24 }); // Token expires in 1 hour 
+
+        navigate('/submissions'); 
       } else {
         const data = await response.json();
         setMessage(data.message);
@@ -46,9 +44,9 @@ const Login = () => {
     }
   };
 
-  // Handle navigation to the registration page
+
   const handleRegisterClick = () => {
-    navigate('/register'); // Redirect to the "/register" page
+    navigate('/register'); 
   };
 
   return (
