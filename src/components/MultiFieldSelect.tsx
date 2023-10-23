@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useFormData } from '../context/FormDataContext';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 interface MultiFieldSelectProps {
@@ -53,12 +53,14 @@ const MultiFieldSelect: FC<MultiFieldSelectProps> = ({ handleCancel, handlePrevi
           >
             Previous
           </button>
+          <Link to="/submissions">
           <button
             onClick={(e)=>handleSubmit(e)}
             className="text-white bg-blue-500 hover:bg-blue-600 rounded-md p-2 px-4"
           >
             Submit
           </button>
+          </Link>
         </div>
       </form>
     </div>
