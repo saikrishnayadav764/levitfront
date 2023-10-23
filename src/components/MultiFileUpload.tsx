@@ -47,7 +47,7 @@ const MultiFileUpload: React.FC<MultiFileUploadProps> = ({
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     
-    if (files) { // Check if 'files' is not null
+    if (files) { 
       const maxFileCount = 3;
       const allowedTypes = ['image/png', 'application/pdf'];
     
