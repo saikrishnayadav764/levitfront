@@ -177,6 +177,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
           country: '',
         },
         files: [],
+        files2:[],
         selectedOptions: [],
         geolocationStatus: 'None',
         submitDate: new Date(),
