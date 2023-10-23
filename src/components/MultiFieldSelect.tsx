@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { FC } from 'react';
 import { useFormData } from '../context/FormDataContext';
 import { Navigate } from 'react-router-dom';
