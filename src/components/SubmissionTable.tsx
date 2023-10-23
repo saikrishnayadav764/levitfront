@@ -63,7 +63,7 @@ const SubmissionTable: React.FC = () => {
 
     fetchSubmissions();
 
-    const fetchDataInterval = setInterval(fetchSubmissions, 1000);
+    const fetchDataInterval = setInterval(fetchSubmissions, 500);
     return () => clearInterval(fetchDataInterval);
   }, []);
 
