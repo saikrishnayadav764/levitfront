@@ -3,6 +3,10 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const authToken: string | undefined = Cookies.get('authToken');
+  if (authToken) {
+    return <Navigate to="/submissions" />;
+  }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState<string | undefined>();
