@@ -17,7 +17,7 @@ const BasicDetails: FC<BasicDetailsProps> = ({ handleNext, handleCancel }) => {
   const { formData, setFormData } = useFormData();
 
   const updateFormData = (key: string, value: string) => {
-    // If the key is nested within the address object, update it accordingly
+ 
     if (key.startsWith('address.')) {
       const addressKey = key.split('.')[1];
       setFormData({
