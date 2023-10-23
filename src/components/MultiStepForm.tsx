@@ -183,6 +183,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
       });
 
       navigate('/submissions');
+      setCurrentStep(1);
     }
   };
 
