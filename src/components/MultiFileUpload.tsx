@@ -7,14 +7,12 @@ interface MultiFileUploadProps {
   handleNext: () => void;
   handleCancel: () => void;
   handlePrevious: () => void;
-  setData: (data: any) => void;
 }
 
 const MultiFileUpload: React.FC<MultiFileUploadProps> = ({
   handleNext,
   handleCancel,
   handlePrevious,
-  setData,
 }) => {
   const authToken = Cookies.get('authToken');
 

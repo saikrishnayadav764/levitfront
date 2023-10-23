@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 interface MultiFieldSelectProps {
   handleCancel: () => void;
   handlePrevious: () => void;
-  handleSubmit: () => void;
+  handleSubmit: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 const MultiFieldSelect: FC<MultiFieldSelectProps> = ({ handleCancel, handlePrevious, handleSubmit }) => {
@@ -54,7 +54,7 @@ const MultiFieldSelect: FC<MultiFieldSelectProps> = ({ handleCancel, handlePrevi
             Previous
           </button>
           <button
-            onClick={handleSubmit}
+            onClick={(e)=>handleSubmit(e)}
             className="text-white bg-blue-500 hover:bg-blue-600 rounded-md p-2 px-4"
           >
             Submit

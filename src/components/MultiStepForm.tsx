@@ -1,6 +1,5 @@
-// @ts-nocheck
 
-import React, { useState } from 'react';
+import React, { useState,FC } from 'react';
 import BasicDetails from './BasicDetails';
 import MultiFieldSelect from './MultiFieldSelect';
 import MultiFileUpload from './MultiFileUpload';
@@ -13,6 +12,7 @@ interface FormData {
   email: string;
   phone: string;
   address: {
+    [key: string]: string; 
     al1: string;
     al2: string;
     city: string;
@@ -27,14 +27,18 @@ interface FormData {
   submitDate: Date;
 }
 
-const MultiStepForm = (): JSX.Element => {
+interface MultiStepFormProps {
+  step: number;
+}
+
+const MultiStepForm: FC<MultiStepFormProps> = ({ step }) => {
   const authToken: string | undefined = Cookies.get('authToken');
 
   if (!authToken) {
     return <Navigate to="/login" />;
   }
   const { formData, setFormData } = useFormData();
-  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [currentStep, setCurrentStep] = useState<number>(step);
   const navigate = useNavigate();
   const [secData, setSecData] = useState<string[]>([]);
 
@@ -55,39 +59,39 @@ const MultiStepForm = (): JSX.Element => {
     setCurrentStep(currentStep - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     if (currentStep === 2) {
-      setFormData({ ...formData, files2: fileUploadData });
+      setFormData({ ...formData});
       setCurrentStep(currentStep + 1);
     } else if (currentStep === 3) {
       e.preventDefault();
-      const emptyFields: string[] = [];
+      // const emptyFields: string[] = [];
 
-      Object.entries(formData).forEach(([key, value]) => {
-        if (key === 'files') {
-          return;
-        }
-        if (key === 'files2') {
-          return;
-        }
-        if (value.length === 0) {
-          emptyFields.push(key);
-        } else if (key === 'address') {
-          const addressKeys = Object.keys(formData.address);
-          for (const addressKey of addressKeys) {
-            if (!formData.address[addressKey]) {
-              emptyFields.push(`address.${addressKey}`);
-            }
-          }
-        }
-      });
+      // Object.entries(formData).forEach(([key, value]) => {
+      //   if (key === 'files') {
+      //     return;
+      //   }
+      //   if (key === 'files2') {
+      //     return;
+      //   }
+      //   if (value.length === 0) {
+      //     emptyFields.push(key);
+      //   } else if (key === 'address') {
+      //     const addressKeys = Object.keys(formData.address);
+      //     for (const addressKey of addressKeys) {
+      //       if (!formData.address[addressKey]) {
+      //         emptyFields.push(`address.${addressKey}`);
+      //       }
+      //     }
+      //   }
+      // });
 
-      if (emptyFields.length > 0) {
-        alert('Please fill out all required fields before submitting.');
-        console.log('Empty fields:', emptyFields);
-        setCurrentStep(1);
-        return;
-      }
+      // if (emptyFields.length > 0) {
+      //   alert('Please fill out all required fields before submitting.');
+      //   console.log('Empty fields:', emptyFields);
+      //   setCurrentStep(1);
+      //   return;
+      // }
 
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
       if (!emailRegex.test(formData.email)) {
@@ -216,27 +220,19 @@ const MultiStepForm = (): JSX.Element => {
     <div>
       {currentStep === 1 && (
         <BasicDetails
-          formData={formData}
-          setFormData={setFormData}
           handleNext={handleNext}
           handleCancel={handleCancel}
-          handlePrevious={handlePrevious}
         />
       )}
       {currentStep === 2 && (
         <MultiFileUpload
-          formData={formData}
-          setFormData={setFormData}
           handleNext={handleNext}
           handleCancel={handleCancel}
           handlePrevious={handlePrevious}
-          setData={setData}
         />
       )}
       {currentStep === 3 && (
         <MultiFieldSelect
-          formData={formData}
-          setFormData={setFormData}
           handleSubmit={handleSubmit}
           handleCancel={handleCancel}
           handlePrevious={handlePrevious}

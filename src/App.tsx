@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import React, { FC } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -13,6 +12,7 @@ const App: FC = () => {
     <BrowserRouter>
       <FormDataProvider>
           <Routes>
+            <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/form" element={<MultiStepForm step={1} />}/>

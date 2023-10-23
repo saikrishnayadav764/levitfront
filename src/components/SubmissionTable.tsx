@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 
 import React, { useState, useEffect } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
@@ -31,8 +31,15 @@ const SubmissionTable: React.FC = () => {
   }
 
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [startDate, setStartDate] = useState<string | null>(null);
-  const [endDate, setEndDate] = useState<string | null>(null);
+  // const [startDate, setStartDate] = useState<string | null>(null);
+  // const [endDate, setEndDate] = useState<string | null>(null);
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
+  
+  
+  
+  
+  
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [filenames, setFilenames] = useState<string[]>([]);
   const navigate = useNavigate();
